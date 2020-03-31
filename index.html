@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<style type="text/css">
+li{ margin: 10px 0; }
+  </style>
+
+  <head>
+    <title>World Facts Challenge</title>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script src="script.js"></script>
+    <script src="countries.js"></script>
+  </head>
+
+  <body>
+    <div ng-controller="appCtrl">
+        <p style="font-size:large">Score: {{score}}</p>
+        Please choose a figure to compare for <b>{{currentCountry.name}}.</b>
+        <li><button ng-disabled="otherCountry!=null" ng-click="compare('population')">Population ({{currentCountry.population | number}})</button>
+        <li><button ng-disabled="otherCountry!=null" ng-click="compare('area')">Area ({{currentCountry.area | number}} km<sup>2</sup>)</button>
+        <li><button ng-disabled="otherCountry!=null" ng-click="compare('gdp')">GDP per citizen (${{currentCountry.gdp | number}})</button>
+        <li><button ng-disabled="otherCountry!=null" ng-click="compare('lifeExpectancy')">Life expectancy ({{currentCountry.lifeExpectancy | number}} years)</button>
+        <p><div id="question">Does <button ng-click="chooseCurrentCountry()">{{currentCountry.name}}</button> or <button ng-click="chooseOtherCountry()">{{otherCountry.name}}</button> have the largest <b>{{makeFigurePretty(figureToCompare)}}</b>?</div></p>
+	<div id=gameOver>
+        <p><div>{{gameOverMessage}}</div></p>
+        <p><div style="color:red">{{scoreMessage}}</div></p>
+	</div>
+    </div>
+  </body>
+
+</html>
